@@ -1,0 +1,65 @@
+html, .btn-glr, #description {
+    font-family: "nimbus-sans", sans-serif;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, ul li a {
+    font-family: nimbus-sans-condensed, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: .85;
+    letter-spacing: -1px;
+}
+
+
+#footballplayer {
+    max-width: 500px;
+    margin-top: 60px;
+}
+
+.titel {
+    font-size: 200px;
+    color: #000
+}
+.titel-mobile {
+    font-size: 100px;
+    color: #000
+}
+
+.titel span, .titel-mobile span {
+    color: #8fe507;
+}
+
+.btn-glr {
+    color: #fff;
+    background-color: #8fe507;
+}
+
+.btn-glr:hover {
+    color: #333;
+    background-color: rgb(233, 233, 233);
+    border-color: rgb(236, 236, 236);
+}
+
+.alert-glr {
+    color: #636464;
+    background-color: #8fe507;
+    border-color: #8fe507;
+}
+
+
+.glr-text {
+    color: #8fe507;
+}
+.glr-link:hover {
+    color: #9cfa07;
+}
+.pointer{ cursor: pointer; }
+
+.d-abs {
+    position: absolute;
+}
+
+.opacity {
+    opacity: 0.2;
+}
