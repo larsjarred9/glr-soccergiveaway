@@ -49,16 +49,32 @@ $database->insert("registration", [
 
 $id = $database->id();
 
-// Pak 1e code
+// Haal codes op
+$codes = $database->select("codes", [
+	"id",
+	"code"
+], [
+    "user" => null
+]);
 
-// Update 1e code
+foreach($codes as $item) {
+	$codeid = $item["id"];
+    $code = $item["code"];
+    break;
+}
 
-$code = "Ezze233423ddd323de23pooe234";
+
+// - Werkt nog niet -
+$data = $database->update("codes", [
+	"user" => $id
+], [
+	"codeid" => $codeid
+]);
 
 
 // Verstuur mail
-$mail->addAddress($email);
-$mail->Subject = "Het GLR geeft weg - Tickets";
-$mail->Body = "Beste {$voornaam},<br><br>Je bent een van de gelukkige studenten die wij blij mogen maken met een EK kaartje in het Nederlandse vak.<br><br>Om een kaartje te bemachtigen verzilver je de code <strong>{$code}</strong> op de <a href='https://ticketaway.com/ticketactiegrafischlyceum'>website van Ticketaway</a>. Vervolgens krijg je binnen 2 uur een toegansbewijs gestuurd.<br><br>De wedstrijd vind plaats op zaterdag avond om 19:00 in het Feijenoord Stadion. Er word verlangt 1.5 uur van te voren aanwezig te zijn in ver band met grote drukte in het stadion. De wedstrijd word gespeeld tussen Nederland en Zweden. Mocht je niet kunnen op deze datum en tijd dan word er verlangt het kaartje niet te verzilveren.";
-$mail->IsHTML(true);
-$mail->send();
+// $mail->addAddress($email);
+// $mail->Subject = "Het GLR geeft weg - Tickets";
+// $mail->Body = "Beste {$voornaam},<br><br>Je bent een van de gelukkige studenten die wij blij mogen maken met een EK kaartje in het Nederlandse vak.<br><br>Om een kaartje te bemachtigen verzilver je de code <strong>{$code}</strong> op de <a href='https://ticketaway.com/ticketactiegrafischlyceum'>website van Ticketaway</a>. Vervolgens krijg je binnen 2 uur een toegansbewijs gestuurd.<br><br>De wedstrijd vind plaats op zaterdag avond om 19:00 in het Feijenoord Stadion. Er word verlangt 1.5 uur van te voren aanwezig te zijn in ver band met grote drukte in het stadion. De wedstrijd word gespeeld tussen Nederland en Zweden. Mocht je niet kunnen op deze datum en tijd dan word er verlangt het kaartje niet te verzilveren.";
+// $mail->IsHTML(true);
+// $mail->send();
