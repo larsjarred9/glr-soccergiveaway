@@ -1,0 +1,24 @@
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+$mail = new PHPMailer;
+$mail->isSMTP();
+$mail->SMTPDebug = 0; # 0 off, 1 client, 2 client y server
+$mail->CharSet  = 'UTF-8';
+$mail->Host = 'contadoro.com';
+$mail->Port = 25;
+$mail->SMTPSecure = 'tls'; # SSL is deprecated
+$mail->SMTPOptions = array(
+    'ssl' => array(
+        'verify_peer'  => true,
+        'verify_depth' => 3,
+        'allow_self_signed' => true,
+        'peer_name' => 'Plesk',
+    )
+);
+
+$mail->SMTPAuth = true;
+$mail->Username = 'noreply@contadoro.com';
+$mail->Password = 'VERBORGEN - PRODUCTIE WACHTWOORD';
+$mail->setFrom('noreply@contadoro.com', 'Contadoro');
+
+?>
