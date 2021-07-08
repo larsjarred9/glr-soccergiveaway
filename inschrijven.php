@@ -3,7 +3,20 @@
 require 'vendor/autoload.php';
 
 require_once "php/database.php";
-$inschrijvingen = count($database->select("registration", "id")); ?>
+// Codes uitgedeeld
+$stmt = $conn->prepare("SELECT count(user) FROM codes WHERE user IS NOT NULL");
+$stmt->execute();
+$stmt->bind_result($inschrijvingen);
+$stmt->fetch();
+$stmt->close();
+
+// Totale codes beschikbaar
+$stmt = $conn->prepare("SELECT count(id) FROM codes");
+$stmt->execute();
+$stmt->bind_result($codeammount);
+$stmt->fetch();
+$stmt->close();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,7 +40,7 @@ $inschrijvingen = count($database->select("registration", "id")); ?>
                     echo "<div class='alert alert-light'>".$_GET['msg']."</div><a class='btn btn-glr' href='inschrijven.php'>Opnieuw Proberen</a>";
                 } else {
                 
-                if ($inschrijvingen <= 10) { ?>
+                if ($inschrijvingen < $codeammount) { ?>
                 <h2>Vul het formulier in</h2>
                 <p>Na het invullen van het formulier ontvangt u indien er codes beschikbaar zijn een unieke code die je kunt verzilveren.</p>
                 <form method="POST" action="php/form.php">
